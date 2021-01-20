@@ -1,20 +1,21 @@
-public class Attempts extends Supplement implements ExtendActivity{
-    private String name;
+public class Attempts extends Supplement{
     
-    public Attempts(String name, String description){
-        super(description);
-        this.name = name;
+    private String description = "";
+
+    public Attempts(String description){
+        super("attempts");
+        this.description = description;
     }
 
-    public String getPhrase(){
-        return getDescription() + " " + name;
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String did(String act){
-        return act;
-    }
-
-    public String statusDid(String act, String status){
-        return act + " " + status; 
+    public String getAttempts() {
+        return super.getName() + " " + this.getDescription();
     }
 }

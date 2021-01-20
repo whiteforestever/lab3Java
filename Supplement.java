@@ -1,17 +1,19 @@
-public abstract class Supplement {
-    private String description;
+public abstract class Supplement{
+    private String name;
 
     public Supplement(){
-        description = "";
+        this.name = "unknown";
     }
 
-    public Supplement(String description){
-        this.description = description;
+    public Supplement(String name){
+        this.name = name;
     }
 
-    public String getDescription(){
-        return description;
+    public String getName(){
+        return this.name;
     }
 
-    public abstract String getPhrase();
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -1,12 +1,21 @@
 public class Confusion extends Supplement{
-    private String name;
     
-    public Confusion(String name, String description){
-        super(description);
-        this.name = name;
+    private String description = "";
+
+    public Confusion(String description){
+        super("confusion");
+        this.description = description;
     }
 
-    public String getPhrase(){
-        return getDescription() + " " + name;
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getConfusion() {
+        return super.getName() + this.getDescription();
     }
 }

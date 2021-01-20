@@ -1,13 +1,9 @@
-public class Effect extends Supplement{
+public class Moment extends Supplement{
     
     private String description = "";
 
-    public Effect(){
-        super.setName("effect");
-    }
-
-    public Effect(String description){
-        super("effect");
+    public Moment(String description){
+        super("in one moment");
         this.description = description;
     }
 
@@ -19,8 +15,7 @@ public class Effect extends Supplement{
         this.description = description;
     }
 
-
-    public String getEffect() {
+    public String getMoment() {
         return super.getName() + " " + this.getDescription();
     }
 }

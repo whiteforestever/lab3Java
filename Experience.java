@@ -1,12 +1,21 @@
 public class Experience extends Supplement{
-    private String name;
     
-    public Experience(String name, String description){
-        super(description);
-        this.name = name;
+    private String description = "";
+
+    public Experience(String description){
+        super("experience");
+        this.description = description;
     }
 
-    public String getPhrase(){
-        return getDescription() + " " + name;
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getExperience() {
+        return super.getName() + " " + this.getDescription();
     }
 }

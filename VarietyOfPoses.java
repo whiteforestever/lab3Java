@@ -1,13 +1,9 @@
-public class Effect extends Supplement{
+public class VarietyOfPoses extends Supplement{
     
     private String description = "";
 
-    public Effect(){
-        super.setName("effect");
-    }
-
-    public Effect(String description){
-        super("effect");
+    public VarietyOfPoses(String description){
+        super("variety of poses");
         this.description = description;
     }
 
@@ -19,8 +15,7 @@ public class Effect extends Supplement{
         this.description = description;
     }
 
-
-    public String getEffect() {
-        return super.getName() + " " + this.getDescription();
+    public String getVarietyOfPoses() {
+        return this.getDescription() + " " + super.getName();
     }
 }

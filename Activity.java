@@ -1,3 +1,4 @@
 public interface Activity {
-    String did(String act);
+    void setExtension(Supplement extension);
+    String getFullActivity();
 }

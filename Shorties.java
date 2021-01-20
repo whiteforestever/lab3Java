@@ -1,11 +1,25 @@
 import java.util.Objects;
 
-public class Shorties implements ExtendActivity{
-    private String name = "Shorties";
-    private final static String clothes = "bulky spacesuits";
+public class Shorties{
+    private String name;
+    private Clothes clothes;
+    private Supplement subject;
+    private Activities activity;
 
-    public String getClothes(){
-        return clothes;
+    public Shorties(String name){
+        this.name = name;
+    }
+
+    public void setClothes(Clothes clothes) {
+        this.clothes = clothes;
+    }
+
+    public void setSubject(Supplement subject) {
+        this.subject = subject;
+    }
+
+    public void setActivity(Activities activity) {
+        this.activity = activity;
     }
 
     public void setName(String name) {
@@ -13,15 +27,19 @@ public class Shorties implements ExtendActivity{
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public String did(String act){
-        return act;
+    public String getClothes() {
+        return clothes.getClothes();
     }
 
-    public String statusDid(String act, String status){
-        return status + " " + act; 
+    public String getSubject() {
+        return subject.getName();
+    }
+
+    public String getActivity() {
+        return activity.getFullActivity();
     }
 
     @Override

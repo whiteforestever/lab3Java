@@ -1,18 +1,12 @@
-public class Cave {
-    private String bottom = "the bottom";
-    private String ceiling = "the ceiling";
-    private String farCorners = "the far corners";
+public class Cave implements Place{
+    String name = "Cave";
+    String area;
 
-    public String getBottom() {
-        return this.bottom;
+    public void setArea(Area area){
+        this.area = area.getArea();
     }
 
-    public String getCeiling() {
-        return this.ceiling;
+    public String getPlace(){
+        return this.area + " of " + this.name; 
     }
-
-    public String getFarCorners() {
-        return this.farCorners;
-    }
-
 }

@@ -1,14 +1,21 @@
 public class Change extends Supplement{
-    private String name;
-    private String place;
     
-    public Change(String name, String description, String place){
-        super(description);
-        this.name = name;
-        this.place = place;
+    private String description = "";
+
+    public Change(String description){
+        super("change");
+        this.description = description;
     }
 
-    public String getPhrase(){
-        return getDescription() + " " + name + " " + place;
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getChange() {
+        return super.getName() + this.getDescription();
     }
 }

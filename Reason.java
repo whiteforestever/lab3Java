@@ -1,13 +1,9 @@
-public class Effect extends Supplement{
+public class Reason extends Supplement{
     
     private String description = "";
 
-    public Effect(){
-        super.setName("effect");
-    }
-
-    public Effect(String description){
-        super("effect");
+    public Reason(String description){
+        super("reason");
         this.description = description;
     }
 
@@ -19,8 +15,7 @@ public class Effect extends Supplement{
         this.description = description;
     }
 
-
-    public String getEffect() {
+    public String getReason() {
         return super.getName() + " " + this.getDescription();
     }
 }

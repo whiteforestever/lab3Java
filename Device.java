@@ -1,16 +1,23 @@
 public class Device extends Supplement{
-    private String name;
     
-    public Device(String name, String description){
-        super(description);
-        this.name = name;
+    private String description = "";
+    private String status = "";
+
+    public Device(String description, String status){
+        super("device");
+        this.description = description;
+        this.status = status;
     }
 
-    public String getPhrase(){
-        return getDescription() + " " + name;
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String did(String act){
-        return act;
+    public String getDevice() {
+        return super.getName() + " " + this.getDescription() + " " + this.status;
     }
 }

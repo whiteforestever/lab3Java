@@ -1,10 +1,9 @@
-public class ReactiveForces extends Supplement{
+public class Strongly extends Supplement{
     
     private String description = "";
 
-    public ReactiveForces(String description){
-        super("reactive forces");
-        this.description = description;
+    public Strongly(){
+        super("strongly");
     }
 
     public String getDescription(){
@@ -15,7 +14,7 @@ public class ReactiveForces extends Supplement{
         this.description = description;
     }
 
-    public String getReactiveForces() {
+    public String getStrongly() {
         return super.getName() + this.getDescription();
     }
 }
