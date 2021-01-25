@@ -6,12 +6,12 @@ public abstract class Inanimate { // неодуш
     
     public Inanimate() {
         this.name = "unknown";
-        this.description = "unknown";
+        this.description = "";
     }
 
     public Inanimate(String name) {
         this.name = name;
-        this.description = "unknown";
+        this.description = "";
     }
 
     public Inanimate(String name, String description) {
@@ -28,6 +28,9 @@ public abstract class Inanimate { // неодуш
     }
 
     public String getInanimate() {
-        return description + " " + name;
+        if(description.equals(""))
+            return name;
+        else
+            return description + " " + name;
     }
 }

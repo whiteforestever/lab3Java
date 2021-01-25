@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import Constants.Activities;
 import Constants.Clothes;
+import Constants.CreatureClass;
 import Constants.Effort;
 import Constants.Mood;
 import Constants.Speed;
@@ -12,12 +13,19 @@ import Inanimate.Inanimate;
 import Inanimate.Supplement;
 import Place.Place;
 
-public class Shortie{
+public class Shortie extends LivingCreatures{
     private String name;
+    private CreatureClass creatureClass = CreatureClass.SHORTIE;
     private Mood mood;
     private Clothes clothes;
     private Supplement[] subjects = new Supplement[0];
     private Activities selfActivity;
+
+
+    @Override
+    public String getCreatureClass() {
+        return creatureClass.getName();
+    }
 
     public void addSupplement(Supplement subject){
         Supplement[] temp = subjects.clone();
@@ -45,7 +53,7 @@ public class Shortie{
         System.out.print("Supplements of " + getName() + ": ");
         for (int i = 0; i < subjects.length; ++i){
             if(i == subjects.length-1)
-                System.out.print(subjects[i].getName() + ".");
+                System.out.println(subjects[i].getName() + ".");
             else
                 System.out.print(subjects[i].getName() + ", ");
         }

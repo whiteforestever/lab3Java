@@ -109,7 +109,7 @@ public enum Activities implements Activity {
 
         @Override
         public String getName() {
-            return name + " " + subject.getName();
+            return name + " " + subject.getInanimate();
         }
     },
 

@@ -1,3 +1,4 @@
+import Animate.LivingCreatures;
 import Animate.Shortie;
 import Constants.Activities;
 import Constants.Area;
@@ -21,6 +22,40 @@ public class Lab3 {
         Shortie znaika = new Shortie("Znaika");
         Shortie zvezdochkin = new Shortie("Professor Zvezdochkin");
 
+        Inanimate experience = new Entity("experience");
+
+        Cave bottomOfCave = new Cave(Area.BOTTOM);
+
+        Cave ceilingOfCave = new Cave(Area.CEILING);
+
+        Inanimate attempts = new Entity("attempts", "unsuccesful");
+
+        Entity bodymovements = new Entity("bodymovements", "their");
+
+        Supplement reactiveForces = new Supplement("reactive forces");
+        Entity movement = new Entity("movement");
+
+        Entity fact = new Entity("fact");
+        Entity confusion = new Entity();
+
+        Entity effect = new Entity("effect");
+        Entity weightlessness = new Entity("weightlessness");
+
+        Place initial = new Cave(Area.INITIAL);
+        Place ultimate = new Cave(Area.ULTIMATE);
+        Supplement device = new Supplement("device", "weightlessness");
+
+        Place farCornersOfCave = new Cave(Area.FAR_CORNERS);
+
+        Entity changes = new Entity("changes", "in gravity");
+        Supplement scale = new Supplement("scale", "spring");
+
+        Cave cave = new Cave(Area.SOMEWHERE);
+        Supplement[] supplementsInCave = {device, scale, reactiveForces};
+        cave.setSubjects(supplementsInCave);
+        LivingCreatures[] livingCreaturesInCave = {jack, blade, roman, artur, znaika, zvezdochkin};
+        cave.setLivingCreatures(livingCreaturesInCave);
+
         jack.setClothes(Clothes.HugeSpaceSuit);
         blade.setClothes(Clothes.HugeSpaceSuit);
         roman.setClothes(Clothes.HugeSpaceSuit);
@@ -28,14 +63,13 @@ public class Lab3 {
         znaika.setClothes(Clothes.HugeSpaceSuit);
         zvezdochkin.setClothes(Clothes.HugeSpaceSuit);
 
-        Inanimate experience = new Entity("experience");
-
+        // Inanimate experience = new Entity("experience");
         jack.activityWithInanimate(Activities.ATTENDED, experience);
         blade.activityWithInanimate(Activities.ATTENDED, experience);
         roman.activityWithInanimate(Activities.ATTENDED, experience);
         artur.activityWithInanimate(Activities.ATTENDED, experience);
 
-        Cave bottomOfCave = new Cave(Area.BOTTOM);
+        // Cave bottomOfCave = new Cave(Area.BOTTOM);
         jack.activityWithExactPlaceWithSpeed(Activities.SEPARATED, Speed.FAST, bottomOfCave);
         blade.activityWithExactPlaceWithSpeed(Activities.SEPARATED, Speed.FAST, bottomOfCave);
         roman.activityWithExactPlaceWithSpeed(Activities.SEPARATED, Speed.FAST, bottomOfCave);
@@ -45,8 +79,12 @@ public class Lab3 {
         blade.setSelfActivity(Activities.GOT_UP);
         roman.setSelfActivity(Activities.GOT_UP);
         artur.setSelfActivity(Activities.GOT_UP);
+        System.out.println(jack.getName() + " " + jack.getSelfActivity());
+        System.out.println(blade.getName() + " " +  blade.getSelfActivity());
+        System.out.println(roman.getName() + " " +  roman.getSelfActivity());
+        System.out.println(artur.getName() + " " +  artur.getSelfActivity());
 
-        Cave ceilingOfCave = new Cave(Area.CEILING);
+        // Cave ceilingOfCave = new Cave(Area.CEILING);
         Activities swimming = Activities.SWIMMING;
         swimming.setPose(Poses.DIFFERENT);
         jack.activityWithExactPlace(Activities.SWIMMING, ceilingOfCave);
@@ -59,7 +97,7 @@ public class Lab3 {
         roman.activityToActivityWithDegreeOfEffort(Activities.TRIED, Activities.GO_DOWN, Effort.WITHALLMIGHT);
         artur.activityToActivityWithDegreeOfEffort(Activities.TRIED, Activities.GO_DOWN, Effort.WITHALLMIGHT);
 
-        Inanimate attempts = new Entity("attempts", "unsuccesful");
+        // Inanimate attempts = new Entity("attempts", "unsuccesful");
         System.out.println(attempts.getInanimate());
 
         System.out.println(jack.getName() + " " + jack.getClothes());
@@ -67,25 +105,25 @@ public class Lab3 {
         System.out.println(roman.getName() + " " + roman.getClothes());
         System.out.println(artur.getName() + " " + artur.getClothes());
 
-        Entity bodymovements = new Entity("bodymovements", "their");
+        // Entity bodymovements = new Entity("bodymovements", "their");
         jack.activityToActivityWithEntity(Activities.COULDNOT, Activities.CALCULATE, bodymovements);
         blade.activityToActivityWithEntity(Activities.COULDNOT, Activities.CALCULATE, bodymovements);
         roman.activityToActivityWithEntity(Activities.COULDNOT, Activities.CALCULATE, bodymovements);
         artur.activityToActivityWithEntity(Activities.COULDNOT, Activities.CALCULATE, bodymovements);
 
-        Supplement reactiveForces = new Supplement("reactive forces");
+        // Supplement reactiveForces = new Supplement("reactive forces");
         jack.addSupplement(reactiveForces);
         blade.addSupplement(reactiveForces);
         roman.addSupplement(reactiveForces);
         artur.addSupplement(reactiveForces);
-        Entity movement = new Entity("movement");
+        // Entity movement = new Entity("movement");
         jack.activityUsingSupplementForEntity(Activities.USE, jack.reachSupplement(reactiveForces), movement);
         blade.activityUsingSupplementForEntity(Activities.USE, blade.reachSupplement(reactiveForces), movement);
         roman.activityUsingSupplementForEntity(Activities.USE, roman.reachSupplement(reactiveForces), movement);
         artur.activityUsingSupplementForEntity(Activities.USE, artur.reachSupplement(reactiveForces), movement);
 
-        Entity fact = new Entity("fact");
-        Entity confusion = new Entity();
+        // Entity fact = new Entity("fact");
+        // Entity confusion = new Entity();
         confusion.setName("confusion");
         confusion.setDescription("general");
         Activities exposed = Activities.EXPOSED;
@@ -93,8 +131,8 @@ public class Lab3 {
         fact.setActivities(exposed);
         fact.getEntityWithActivity();
 
-        Entity effect = new Entity("effect");
-        Entity weightlessness = new Entity("weightlessness");
+        // Entity effect = new Entity("effect");
+        // Entity weightlessness = new Entity("weightlessness");
         effect.setObject(weightlessness);
         znaika.activityOfEntity(Activities.DONTAFFECTED, effect);
         zvezdochkin.activityOfEntity(Activities.DONTAFFECTED, effect);
@@ -102,13 +140,13 @@ public class Lab3 {
         znaika.activityToActivityWithDegreeOfEffort(Activities.CONTINUED, Activities.WORK, Effort.NONSTRESSED);
         zvezdochkin.activityToActivityWithDegreeOfEffort(Activities.CONTINUED, Activities.WORK, Effort.NONSTRESSED);
 
-        Place initial = new Cave(Area.INITIAL);
-        Place ultimate = new Cave(Area.ULTIMATE);
+        // Place initial = new Cave(Area.INITIAL);
+        // Place ultimate = new Cave(Area.ULTIMATE);
         Activities transferredZnaika = Activities.TRANSFERRED;
         Activities transferredZvezdochkin = Activities.TRANSFERRED;
         transferredZnaika.setFrom(initial);
         transferredZvezdochkin.setTo(ultimate);
-        Supplement device = new Supplement("device", "weightlessness");
+        // Supplement device = new Supplement("device", "weightlessness");
         znaika.addSupplement(device);
         zvezdochkin.addSupplement(device);
         transferredZnaika.setObject(znaika.reachSupplement(device));
@@ -118,16 +156,17 @@ public class Lab3 {
         System.out.println(znaika.getName() + " " + znaika.getSelfActivity());
         System.out.println(zvezdochkin.getName() + " " + zvezdochkin.getSelfActivity());
 
-        Place farCornersOfCave = new Cave(Area.FAR_CORNERS);
+        // Place farCornersOfCave = new Cave(Area.FAR_CORNERS);
         znaika.activityWithExactPlace(Activities.DEPARTED, farCornersOfCave);
         zvezdochkin.activityWithExactPlace(Activities.DEPARTED, farCornersOfCave);
 
-        Entity changes = new Entity("changes", "in gravity");
-        Supplement scale = new Supplement("scale", "spring");
+        // Entity changes = new Entity("changes", "in gravity");
+        // Supplement scale = new Supplement("scale", "spring");
         znaika.addSupplement(scale);
         zvezdochkin.addSupplement(scale);
         znaika.activityOnEntityWithSupplement(Activities.CHECKED, changes, znaika.reachSupplement(scale));
         zvezdochkin.activityOnEntityWithSupplement(Activities.CHECKED, changes, zvezdochkin.reachSupplement(scale));
+
 
     }
 }

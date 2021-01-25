@@ -9,18 +9,15 @@ public class Entity extends Inanimate { // сущность
     private Entity object;
 
     public Entity() {
-        super.name = "unknown";
-        super.description = "unknown";
+        super();
     }
 
     public Entity(String name) {
-        super.name = name;
-        super.description = "unknown";
+        super(name);
     }
 
     public Entity(String name, String description) {
-        super.name = name;
-        super.description = description;
+        super(name, description);
     }
 
     public void setObject(Entity object) {
@@ -32,11 +29,11 @@ public class Entity extends Inanimate { // сущность
     }
 
     public void setName(String name) {
-        super.name = name;
+        this.name = name;
     }
 
     public void setDescription(String description) {
-        super.description = description;
+        this.description = description;
     }
 
     public void setActivities(Activities activity){
@@ -44,11 +41,11 @@ public class Entity extends Inanimate { // сущность
     }
 
     public void getEntityWithActivity(){
-        System.out.println(super.description + " " + super.name + " " + activity.getName());
+        System.out.println(getInanimate() + " " + activity.getName());
     }
 
     public String getEntityWithObject(){
-        return super.description + " " + super.name + " " + object.getName();
+        return getInanimate() + " " + object.getName();
     }
     
 }
