@@ -31,7 +31,7 @@ public class Cave implements Place {
     }
 
     public void getLivingCreatures(){
-        System.out.print("Supplements in " + getName() + ": ");
+        System.out.print("Living creatures in " + getName() + ": ");
         for (int i = 0; i < livingCreatures.length; ++i){
             if(i == livingCreatures.length-1)
                 System.out.println(livingCreatures[i].getName() + ".");

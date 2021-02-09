@@ -3,7 +3,7 @@ package Constants;
 public enum Clothes {
     HugeSpaceSuit("a huge space suit"), TSHIRT("a t-shirt"), SHIRT("a shirt"),
     TURTLENECK("a turtleneck"), JEANS("jeans"), PANTS("pants"),
-    SNEAKERS("sneakers"), SHOES("shoes");
+    SNEAKERS("sneakers"), SHOES("shoes"), GLASSES("glasses");
 
     private String clothes;
 

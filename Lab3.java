@@ -1,3 +1,4 @@
+import Animate.Human;
 import Animate.LivingCreatures;
 import Animate.Shortie;
 import Constants.Activities;
@@ -19,8 +20,8 @@ public class Lab3 {
         Shortie blade = new Shortie("Blade");
         Shortie roman = new Shortie("Roman");
         Shortie artur = new Shortie("Artur");
-        Shortie znaika = new Shortie("Znaika");
-        Shortie zvezdochkin = new Shortie("Professor Zvezdochkin");
+        Human znaika = new Human("Znaika");
+        Human zvezdochkin = new Human("Professor Zvezdochkin");
 
         Inanimate experience = new Entity("experience");
 
@@ -167,6 +168,6 @@ public class Lab3 {
         znaika.activityOnEntityWithSupplement(Activities.CHECKED, changes, znaika.reachSupplement(scale));
         zvezdochkin.activityOnEntityWithSupplement(Activities.CHECKED, changes, zvezdochkin.reachSupplement(scale));
 
-
+            
     }
 }

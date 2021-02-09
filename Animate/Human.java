@@ -13,9 +13,9 @@ import Inanimate.Inanimate;
 import Inanimate.Supplement;
 import Place.Place;
 
-public class Shortie extends LivingCreatures{
+public class Human extends LivingCreatures{
     private String name;
-    private CreatureClass creatureClass = CreatureClass.SHORTIE;
+    private CreatureClass creatureClass = CreatureClass.HUMAN;
     private Mood mood;
     private Clothes clothes;
     private Supplement[] subjects = new Supplement[0];
@@ -72,7 +72,7 @@ public class Shortie extends LivingCreatures{
         return null;
     }
 
-    public Shortie(String name){
+    public Human(String name){
         this.name = name;
     }
 
@@ -190,7 +190,7 @@ public class Shortie extends LivingCreatures{
         if(getClass() != otherObject.getClass()) return false;
 
         // проверка на равенство полей, так как известно, что otherObject != null
-        Shortie other = (Shortie) otherObject;
+        Human other = (Human) otherObject;
         return Objects.equals(name, other.name) &&
         Objects.equals(creatureClass, other.creatureClass) &&
         Objects.equals(clothes, other.clothes) && 

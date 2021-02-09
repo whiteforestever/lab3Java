@@ -3,7 +3,7 @@ package Inanimate;
 public abstract class Inanimate { // неодуш
     protected String name;
     protected String description;
-    
+
     public Inanimate() {
         this.name = "unknown";
         this.description = "";
