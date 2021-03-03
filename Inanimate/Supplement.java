@@ -2,7 +2,9 @@ package Inanimate;
 
 public class Supplement extends Inanimate{ // предмет
 
-    public Supplement() {
+    public int length;
+
+	public Supplement() {
         super.name = "unknown";
         super.description = "unknown";
     }
@@ -29,4 +31,18 @@ public class Supplement extends Inanimate{ // предмет
         return super.description + " " + super.name;
     }
 
+    public void moreDescriptionForSupplement(String moreDescription){
+        class VeryDescriptionable{ // локальный класс
+            // нужен тогда, когда появляется необходимость расширенного описания
+            private String extraDescription = description + " " + moreDescription;
+            
+            void getMoreDescriptionable(){
+                System.out.println(extraDescription + " " + name);
+            }
+        }
+        VeryDescriptionable extraDescription = new VeryDescriptionable();
+        extraDescription.getMoreDescriptionable();
+    }
+
+	
 }

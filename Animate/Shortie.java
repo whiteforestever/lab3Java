@@ -3,11 +3,14 @@ package Animate;
 import java.util.Objects;
 
 import Constants.Activities;
+import Constants.Area;
 import Constants.Clothes;
 import Constants.CreatureClass;
 import Constants.Effort;
 import Constants.Mood;
 import Constants.Speed;
+import Exceptions.ZeroSupplements;
+import Exceptions.VeryHeavy;
 import Inanimate.Entity;
 import Inanimate.Inanimate;
 import Inanimate.Supplement;
@@ -19,25 +22,33 @@ public class Shortie extends LivingCreatures{
     private Mood mood;
     private Clothes clothes;
     private Supplement[] subjects = new Supplement[0];
+    private static int maxSupplements = 10;
     private Activities selfActivity;
-
+    private String fullInfoAboutPlace; // например, для приложений, которые выводят подробную инфу о местоположении
 
     @Override
     public String getCreatureClass() {
         return creatureClass.getName();
     }
 
-    public void addSupplement(Supplement subject){
+    public void addSupplement(Supplement subject)throws VeryHeavy{
+        if (subject.length > maxSupplements) throw new VeryHeavy ("Too many supplements");
         Supplement[] temp = subjects.clone();
         subjects = new Supplement[subjects.length + 1];
         System.arraycopy(temp, 0, subjects, 0, temp.length);
         subjects[subjects.length - 1] = subject;
     }
 
-    public void removeSupplement(Supplement subject){
+    public static class HeavyMax { // static inner class
+        public static int getMaxSupplements(){
+            return maxSupplements;
+        }
+    } 
+
+    public void removeSupplement(Supplement subject) throws ZeroSupplements{
         for (int i = 0; i < subjects.length; ++i){
             if (subjects.length == 0)
-                break;
+                throw new ZeroSupplements("You mustn't remove");
             if(subjects[i].getName().equals(subject.getName())){
                 Supplement[] temp = new Supplement[subjects.length - 1];
                 System.arraycopy(subjects, 0, temp, 0, i);
@@ -100,6 +111,10 @@ public class Shortie extends LivingCreatures{
         return name;
     }
 
+    public void getFullInfoAboutPlace(){
+        System.out.println(fullInfoAboutPlace);
+    }
+
     public String getClothes() {
         return "dressed in " + clothes.getName();
     }
@@ -110,6 +125,10 @@ public class Shortie extends LivingCreatures{
 
     public String getSelfActivity() {
         return selfActivity.getName();
+    }
+
+    public void seeSelfActivity() {
+        System.out.println(getName() + " " + getSelfActivity());
     }
 
     public Mood getMood() {
@@ -160,6 +179,10 @@ public class Shortie extends LivingCreatures{
         System.out.println(this.name + " " + activity1.getName() + " to " + activity2.getName());
     }
 
+    public void activityToAnimate(Activities activity1, LivingCreatures animate){
+        System.out.println(this.name + " " + activity1.getName() + " to " + animate.getName());
+    }
+
     public void activityToActivityWithDegreeOfEffort(Activities activity1, Activities activity2, Effort effort){
         System.out.println(this.name + " " + effort.getName() + " " + activity1.getName() + " to " + activity2.getName());
     }
@@ -168,8 +191,44 @@ public class Shortie extends LivingCreatures{
         System.out.println(this.name + " " + activity1.getName() + " to " + activity2.getName() + " " + entity.getInanimate());
     }
 
+    public void activityToActivityWithSupplement(Activities activity1, Activities activity2, Supplement supplement){
+        System.out.println(this.name + " " + activity1.getName() + " to " + activity2.getName() + " " + supplement.getInanimate());
+    }
+
     public void activityUsingSupplementForEntity(Activities activity, Supplement supplement, Entity entity){
         System.out.println(this.name + " " + activity.getName() + " " +  supplement.getName() + " for " + entity.getName());
+    }
+
+    public class CurrentPlace implements Place{
+        private String nameOfPlace;
+        private Area area;
+
+        public String getName(){
+            return nameOfPlace;
+        }
+
+        public void setArea(Area area){
+            this.area = area;
+        }
+
+        public CurrentPlace(){
+            this.nameOfPlace = "unknown";
+            this.area = Area.UNKNOWN;
+        }
+
+        public CurrentPlace(String nameOfPlace){
+            this.nameOfPlace = nameOfPlace;
+            this.area = Area.UNKNOWN;
+        }
+
+        public CurrentPlace(String nameOfPlace, Area area){
+            this.nameOfPlace = nameOfPlace;
+            this.area = area;
+        }
+
+        public void setFullInfoAboutPlace(){
+            fullInfoAboutPlace = Shortie.this.getName() + " in " + area.getName() + " of the " + this.getName();
+        }
     }
 
     @Override
@@ -205,5 +264,4 @@ public class Shortie extends LivingCreatures{
         ", clothes= " + getClothes() + ", mood= " + getMood() +
         ", selfActivity= " + getSelfActivity() + ", subjects= " + seeAllSupplements() +"]";
     }
-
 }

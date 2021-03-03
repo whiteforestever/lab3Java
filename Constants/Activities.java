@@ -180,6 +180,140 @@ public enum Activities implements Activity {
         public String getName() {
             return this.name;
         }
+    },
+
+    CHOOSE{
+        private String name = "choose";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    TAKE{
+        private String name = "take";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    DESIGN{
+        private String name = "design";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+    
+    STAY{
+        private String name = "stay";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    CLOSE{
+        private String name = "close";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    
+    ASK{
+        private String name = "ask";
+        private String about;
+
+
+        public void setAbout(String about) {
+            this.about = about;
+        }
+        @Override
+        public String getName() {
+            return this.name + " about " + about;
+        }
+    },
+
+    LAUGH{
+        private String name = "laugh";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    PRETENDED{
+        private String name = "pretended";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    DONTHEAR{
+        private String name = "don't hear";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    FINISH{
+        private String name = "finish";
+
+        // x class что надо закончить через Activity
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    CONFESS{
+        private String name = "confess";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    DISCOVER{
+        private String name = "discover";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    ALLOW{
+        private String name = "allow";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+    },
+
+    SAVE{
+        private String name = "save";
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
     };
 
 	public void setSubject(Entity confusion) {
@@ -195,5 +329,9 @@ public enum Activities implements Activity {
 	}
 
 	public void setPose(Poses different) {
+	}
+
+	public void setAbout(String about) {
+
 	}
 }

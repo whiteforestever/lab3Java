@@ -1,6 +1,8 @@
 package Inanimate;
 
 import Constants.Activities;
+import Constants.Area;
+import Place.Place;
 
 public class Entity extends Inanimate { // сущность
 
@@ -46,6 +48,27 @@ public class Entity extends Inanimate { // сущность
 
     public String getEntityWithObject(){
         return getInanimate() + " " + object.getName();
+    }
+
+    public void EntityCurrentPlace (String nameOfPlace, Area areaOfPlace){
+        var place = new Place() // анонимный класс для быстрого места entity
+        {
+            String name = nameOfPlace;
+            Area area;
+
+            public void setArea(Area areaOfPlace) {
+                area = areaOfPlace;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void getEntityCurrentPlace(){
+                System.out.println(name + " " + area);
+            }
+        };
+        place.getEntityCurrentPlace();
     }
     
 }

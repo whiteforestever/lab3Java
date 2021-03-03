@@ -99,6 +99,10 @@ public class Human extends LivingCreatures{
     public String getName() {
         return name;
     }
+    
+    public void seeSelfActivity() {
+        System.out.println(getName() + " " + getSelfActivity());
+    }
 
     public String getClothes() {
         return "dressed in " + clothes.getName();

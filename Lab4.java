@@ -12,14 +12,17 @@ import Inanimate.Inanimate;
 import Inanimate.Supplement;
 import Place.Cave;
 import Place.Place;
+import Exceptions.*;
 
-public class Lab3 {
-    public static void main(String... args){
+public class Lab4 {
+    public static void main(String... args) throws VeryHeavy {
         
         Shortie jack = new Shortie("Jack");
         Shortie blade = new Shortie("Blade");
         Shortie roman = new Shortie("Roman");
         Shortie artur = new Shortie("Artur");
+        Shortie fuchsia = new Shortie("Fuchsia");
+        Shortie seledochka = new Shortie("Seledochka");
         Human znaika = new Human("Znaika");
         Human zvezdochkin = new Human("Professor Zvezdochkin");
 
@@ -63,6 +66,41 @@ public class Lab3 {
         artur.setClothes(Clothes.HugeSpaceSuit);
         znaika.setClothes(Clothes.HugeSpaceSuit);
         zvezdochkin.setClothes(Clothes.HugeSpaceSuit);
+
+        Supplement aluniteCrystal = new Supplement("alunite crystal", "the biggest");
+        jack.activitySupplement(Activities.CHOOSE, aluniteCrystal);
+        blade.activitySupplement(Activities.CHOOSE, aluniteCrystal);
+        roman.activitySupplement(Activities.CHOOSE, aluniteCrystal);
+        artur.activitySupplement(Activities.CHOOSE, aluniteCrystal);
+
+        Supplement magnet = new Supplement("magnet", "the strongest");
+        jack.activitySupplement(Activities.TAKE, magnet);
+        blade.activitySupplement(Activities.TAKE, magnet);
+        roman.activitySupplement(Activities.TAKE, magnet);
+        artur.activitySupplement(Activities.TAKE, magnet);
+
+        aluniteCrystal.moreDescriptionForSupplement("was taken to the moon in a rocket");
+        magnet.moreDescriptionForSupplement("was taken to the moon in a rocket");
+
+        device.setDescription("new");
+        jack.activityToActivityWithSupplement(Activities.TRIED, Activities.DESIGN, device);
+        blade.activityToActivityWithSupplement(Activities.TRIED, Activities.DESIGN, device);
+        roman.activityToActivityWithSupplement(Activities.TRIED, Activities.DESIGN, device);
+        artur.activityToActivityWithSupplement(Activities.TRIED, Activities.DESIGN, device);
+
+        // создание внутреннего класса местоположения для коротышек
+        Shortie.CurrentPlace currentPlaceJack = jack.new CurrentPlace("Cave", Area.SOMEWHERE);
+        Shortie.CurrentPlace currentPlaceBlade = blade.new CurrentPlace("Cave", Area.SOMEWHERE);
+        Shortie.CurrentPlace currentPlaceRoman = roman.new CurrentPlace("Cave", Area.SOMEWHERE);
+        Shortie.CurrentPlace currentPlaceArtur = artur.new CurrentPlace("Cave", Area.SOMEWHERE);
+        currentPlaceJack.setFullInfoAboutPlace();
+        currentPlaceBlade.setFullInfoAboutPlace();
+        currentPlaceRoman.setFullInfoAboutPlace();
+        currentPlaceArtur.setFullInfoAboutPlace();
+        jack.getFullInfoAboutPlace();
+        blade.getFullInfoAboutPlace();
+        roman.getFullInfoAboutPlace();
+        artur.getFullInfoAboutPlace();
 
         // Inanimate experience = new Entity("experience");
         jack.activityWithInanimate(Activities.ATTENDED, experience);
@@ -148,6 +186,7 @@ public class Lab3 {
         transferredZnaika.setFrom(initial);
         transferredZvezdochkin.setTo(ultimate);
         // Supplement device = new Supplement("device", "weightlessness");
+        device.setDescription("weightlessness");
         znaika.addSupplement(device);
         zvezdochkin.addSupplement(device);
         transferredZnaika.setObject(znaika.reachSupplement(device));
@@ -168,6 +207,33 @@ public class Lab3 {
         znaika.activityOnEntityWithSupplement(Activities.CHECKED, changes, znaika.reachSupplement(scale));
         zvezdochkin.activityOnEntityWithSupplement(Activities.CHECKED, changes, zvezdochkin.reachSupplement(scale));
 
-            
+        Activities ask = Activities.ASK;
+        ask.setAbout("zero-gravity inactivity");
+
+        jack.activityToAnimate(ask, znaika);
+        jack.activityToAnimate(ask, zvezdochkin);
+        blade.activityToAnimate(ask, znaika);
+        blade.activityToAnimate(ask, zvezdochkin);
+        roman.activityToAnimate(ask, znaika);
+        roman.activityToAnimate(ask, zvezdochkin);
+        artur.activityToAnimate(ask, znaika);
+        artur.activityToAnimate(ask, zvezdochkin);
+
+        znaika.setSelfActivity(Activities.LAUGH);
+        zvezdochkin.setSelfActivity(Activities.LAUGH);
+        znaika.seeSelfActivity();
+        zvezdochkin.seeSelfActivity();
+
+        znaika.activityToActivity(Activities.PRETENDED, Activities.DONTHEAR);
+        zvezdochkin.activityToActivity(Activities.PRETENDED, Activities.DONTHEAR);
+
+        znaika.setSelfActivity(Activities.CONFESS);
+        zvezdochkin.setSelfActivity(Activities.CONFESS);
+        znaika.seeSelfActivity();
+        zvezdochkin.seeSelfActivity();
+
+        aluniteCrystal.setDescription("saving weight");
+        znaika.activitySupplement(Activities.DISCOVER, aluniteCrystal);
+        zvezdochkin.activitySupplement(Activities.DISCOVER, aluniteCrystal);
     }
 }
