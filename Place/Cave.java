@@ -52,5 +52,4 @@ public class Cave implements Place {
         return this.area + " of " + this.name; 
     }
 
-    //добавить людей
 }

@@ -1,6 +1,7 @@
 import Animate.Human;
 import Animate.LivingCreatures;
 import Animate.Shortie;
+import Animate.Shortie.HeavyMax;
 import Constants.Activities;
 import Constants.Area;
 import Constants.Clothes;
@@ -25,6 +26,7 @@ public class Lab4 {
         Shortie seledochka = new Shortie("Seledochka");
         Human znaika = new Human("Znaika");
         Human zvezdochkin = new Human("Professor Zvezdochkin");
+
 
         Inanimate experience = new Entity("experience");
 
@@ -72,6 +74,13 @@ public class Lab4 {
         blade.activitySupplement(Activities.CHOOSE, aluniteCrystal);
         roman.activitySupplement(Activities.CHOOSE, aluniteCrystal);
         artur.activitySupplement(Activities.CHOOSE, aluniteCrystal);
+
+        /**
+         * проверка работы внутреннего non-static class
+         */
+        // Shortie.CurrentPlace placeArtur = artur.new CurrentPlace();
+        // placeArtur.setFullInfoAboutPlace();
+        // artur.getFullInfoAboutPlace();
 
         Supplement magnet = new Supplement("magnet", "the strongest");
         jack.activitySupplement(Activities.TAKE, magnet);

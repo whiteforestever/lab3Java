@@ -9,7 +9,7 @@ import Constants.CreatureClass;
 import Constants.Effort;
 import Constants.Mood;
 import Constants.Speed;
-import Exceptions.ZeroSupplements;
+import Exceptions.NegativeSupplements;
 import Exceptions.VeryHeavy;
 import Inanimate.Entity;
 import Inanimate.Inanimate;
@@ -31,24 +31,28 @@ public class Shortie extends LivingCreatures{
         return creatureClass.getName();
     }
 
-    public void addSupplement(Supplement subject)throws VeryHeavy{
-        if (subject.length > maxSupplements) throw new VeryHeavy ("Too many supplements");
+    public void addSupplement(Supplement subject) throws VeryHeavy{
+        if (subjects.length >= maxSupplements) 
+            throw new VeryHeavy ("Too many supplements for one shortie");
         Supplement[] temp = subjects.clone();
         subjects = new Supplement[subjects.length + 1];
         System.arraycopy(temp, 0, subjects, 0, temp.length);
         subjects[subjects.length - 1] = subject;
     }
 
-    public static class HeavyMax { // static inner class
-        public static int getMaxSupplements(){
-            return maxSupplements;
+    public static class HeavyMax { // static inner class for comparable supplements of two shorties
+        public static Shortie getMaxSupplements(Shortie first, Shortie second){
+            if (first.subjects.length >= second.subjects.length)
+                return first;
+            else
+                return second;
         }
-    } 
+    }
 
-    public void removeSupplement(Supplement subject) throws ZeroSupplements{
+    public void removeSupplement(Supplement subject){
+        if (subjects.length == 0) 
+            throw new NegativeSupplements("You can't remove, because you don't have supplements");
         for (int i = 0; i < subjects.length; ++i){
-            if (subjects.length == 0)
-                throw new ZeroSupplements("You mustn't remove");
             if(subjects[i].getName().equals(subject.getName())){
                 Supplement[] temp = new Supplement[subjects.length - 1];
                 System.arraycopy(subjects, 0, temp, 0, i);

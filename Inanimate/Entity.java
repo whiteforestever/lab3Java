@@ -9,6 +9,7 @@ public class Entity extends Inanimate { // сущность
     private Activities activity;
     private Supplement subject;
     private Entity object;
+    private Place currentPlace;
 
     public Entity() {
         super();
@@ -50,12 +51,10 @@ public class Entity extends Inanimate { // сущность
         return getInanimate() + " " + object.getName();
     }
 
-    public void EntityCurrentPlace (String nameOfPlace, Area areaOfPlace){
+    public void setEntityCurrentPlace (Place curPlace, Area areaOfPlace){
         var place = new Place() // анонимный класс для быстрого места entity
         {
-            String name = nameOfPlace;
-            Area area;
-
+            private Area area = areaOfPlace;
             public void setArea(Area areaOfPlace) {
                 area = areaOfPlace;
             }
@@ -64,11 +63,16 @@ public class Entity extends Inanimate { // сущность
                 return name;
             }
 
-            public void getEntityCurrentPlace(){
-                System.out.println(name + " " + area);
+            public void setEntityCurrentPlace(){
+                currentPlace = curPlace;
+                currentPlace.setArea(area);
             }
         };
-        place.getEntityCurrentPlace();
+        place.setEntityCurrentPlace();
+    }
+
+    public void getEntityCurrentPlace(){
+        System.out.println(super.name + " in " + currentPlace.getName());
     }
     
 }

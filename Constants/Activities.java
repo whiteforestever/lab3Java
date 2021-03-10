@@ -271,9 +271,7 @@ public enum Activities implements Activity {
 
     FINISH{
         private String name = "finish";
-
-        // x class что надо закончить через Activity
-
+        
         @Override
         public String getName() {
             return this.name;
